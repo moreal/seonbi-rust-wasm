@@ -20,7 +20,7 @@ fn app() -> Html {
                 });
                 || ()
             },
-            source_original.clone(),
+            source_original,
         );
     }
 
