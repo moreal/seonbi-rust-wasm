@@ -1,8 +1,8 @@
 mod services;
 
+use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 use yew::{function_component, html, start_app, use_effect_with_deps, use_state, Callback};
-use web_sys::HtmlTextAreaElement;
 
 #[function_component(App)]
 fn app() -> Html {
@@ -12,13 +12,16 @@ fn app() -> Html {
         let source = source.clone();
         let source_original = source.clone();
         let result = result.clone();
-        use_effect_with_deps(move |_| {
-            wasm_bindgen_futures::spawn_local(async move {
-                let ret = services::seonbi::translate(&source).await.unwrap();
-                result.set(ret);
-            });
-            || ()
-        }, source_original.clone());
+        use_effect_with_deps(
+            move |_| {
+                wasm_bindgen_futures::spawn_local(async move {
+                    let ret = services::seonbi::translate(&source).await.unwrap();
+                    result.set(ret);
+                });
+                || ()
+            },
+            source_original.clone(),
+        );
     }
 
     let oninput = {
