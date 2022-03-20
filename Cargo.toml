@@ -7,3 +7,7 @@ edition = "2021"
 
 [dependencies]
 yew = "0.19.0"
+reqwest = { version = "0.11.10", features = ["json"] }
+serde_json = "1.0.59"
+serde = "1.0.117"
+wasm-bindgen-futures = "0.4.29"
