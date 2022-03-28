@@ -3,7 +3,7 @@ mod services;
 use dioxus::prelude::*;
 
 fn app(cx: Scope) -> Element {
-    let source = use_state(&cx, || "선비 紹介 國漢文混用".to_string());
+    let source = use_state(&cx, || "".to_string());
     let result = use_future(&cx, (source,), |(source,)| async move {
         services::seonbi::translate(&source).await
     });
@@ -11,7 +11,6 @@ fn app(cx: Scope) -> Element {
     cx.render(rsx! {
         div {
             textarea {
-                value: "{source}",
                 oninput: move |e| source.set(e.data.value.to_string())
             },
             match result.value() {
