@@ -1,0 +1,10 @@
+#translation-source {
+    min-width: 50%;
+    height: 100px;
+    display: inline;
+}
+
+#translation-result {
+    min-width: 50%;
+    display: inline;
+}
