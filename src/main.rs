@@ -19,8 +19,9 @@ fn app(cx: Scope) -> Element {
             id: "translation-source",
             oninput: move |e| source.set(e.data.value.to_string())
         },
-        div {            
+        textarea {
             id: "translation-result",
+            readonly: "true",
             "{result}"
         }
     })
